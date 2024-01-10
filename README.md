@@ -74,9 +74,9 @@
 #### Листинг запроса:
 
 ```
-	SELECT SUM(amount),MONTH(payment_date),COUNT(p.rental_id) 
-	from payment p 
-	GROUP by MONTH(payment_date)
+	SELECT SUM(amount),date_format(payment_date, "%m-%Y"),COUNT(p.rental_id)
+	from payment p
+	GROUP by date_format(payment_date, "%m-%Y")
 	ORDER BY SUM(amount) DESC
 	LIMIT 1;
 ```
